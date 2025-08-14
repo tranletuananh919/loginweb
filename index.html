@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Demo: Đăng nhập Google trên GitHub Pages</title>
+    <meta name="description" content="Demo đăng nhập bằng Google sử dụng Google Identity Services (client-side) trên GitHub Pages." />
+    <!-- App styles -->
+    <link rel="stylesheet" href="assets/styles.css" />
+    <!-- Google Identity Services -->
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <!-- App config (copy config.example.js -> config.js và điền CLIENT_ID) -->
+    <script src="assets/config.js"></script>
+    <!-- App logic -->
+    <script src="assets/app.js" defer></script>
+  </head>
+  <body>
+    <main class="container">
+      <header class="header">
+        <h1>Demo: Login với Google</h1>
+        <p class="muted">
+          Chạy được trên <strong>GitHub Pages</strong> vì không cần backend. Chỉ là <em>demo</em> hiển thị thông tin cơ bản từ ID Token.
+        </p>
+      </header>
+
+      <section id="auth-section" class="card">
+        <div id="signed-out">
+          <div id="g-btn"></div>
+          <p class="note">
+            Sau khi đăng nhập, trang sẽ <b>giải mã ID token trên trình duyệt</b> để hiện tên, email, ảnh đại diện. 
+            Đây chỉ là demo — nếu muốn bảo mật thật sự, bạn cần có backend để <b>xác thực ID token</b> với Google.
+          </p>
+        </div>
+
+        <div id="signed-in" class="hidden">
+          <div class="profile">
+            <img id="user-picture" alt="Avatar" />
+            <div class="info">
+              <div class="name-email">
+                <span id="user-name" class="name"></span>
+                <span id="user-email" class="email"></span>
+              </div>
+              <pre id="user-jwt" class="jwt"></pre>
+            </div>
+          </div>
+          <div class="actions">
+            <button id="signout">Đăng xuất</button>
+          </div>
+        </div>
+      </section>
+
+      <footer class="footer">
+        <p>
+          Mã nguồn: bạn có thể fork repo này và bật GitHub Pages. 
+          <br />
+          Công nghệ: <a href="https://developers.google.com/identity/gsi/web">Google Identity Services</a>.
+        </p>
+      </footer>
+    </main>
+  </body>
+</html>
